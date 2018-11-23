@@ -10,7 +10,8 @@
     "nodemon": "*",
     "npm": "*",
     "request": "*",
-    "uuid": "*"
+    "uuid": "*",
+    "vue": "^2.5.17"
   },
   "author": "",
   "license": "MIT",
