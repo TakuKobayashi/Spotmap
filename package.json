@@ -1,0 +1,17 @@
+{
+  "name": "spotmap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "ejs": "*",
+    "express": "*",
+    "nodemon": "*",
+    "npm": "*",
+    "request": "*",
+    "uuid": "*",
+    "archiver": "*"
+  },
+  "author": "",
+  "license": "MIT"
+}
