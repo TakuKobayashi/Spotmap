@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 //use path static resource files
-app.use(express.static('public'));
+app.use(express.static('../client/dist'));
 
 var port = process.env.PORT || 3000;
 
