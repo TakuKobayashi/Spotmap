@@ -4,14 +4,17 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "archiver": "*",
     "ejs": "*",
     "express": "*",
     "nodemon": "*",
     "npm": "*",
     "request": "*",
-    "uuid": "*",
-    "archiver": "*"
+    "uuid": "*"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.26.0"
+  }
 }
