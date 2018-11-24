@@ -9,13 +9,14 @@
   },
   "dependencies": {
     "archiver": "*",
+    "dotenv": "*",
     "ejs": "*",
     "express": "*",
     "nodemon": "*",
     "npm": "*",
-    "request": "*",
-    "uuid": "*",
-    "dotenv": "*"
+    "querystring": "^0.2.0",
+    "request": "^2.88.0",
+    "uuid": "*"
   },
   "author": "",
   "license": "MIT",
