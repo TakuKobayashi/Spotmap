@@ -1,8 +1,11 @@
 var express = require('express');
 var app = express();
+require('dotenv').config();
 
 //use path static resource files
-app.use(express.static('public'));
+app.use(express.static('assets'));
+app.set("views", __dirname + "/views");
+app.set("view engine", "ejs");
 
 var port = process.env.PORT || 3000;
 
@@ -15,5 +18,7 @@ var server = http.createServer(app).listen(port, function () {
 });
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.render('./index.ejs', {
+    googleApiKey: process.env.GOOGLE_API_KEY
+  });
 });
