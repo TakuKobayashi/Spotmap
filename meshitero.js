@@ -134,7 +134,7 @@ var Meshitero = function () {
       latitude: searchObj.latitude,
       longitude: searchObj.longitude,
       // 半径(メートル)
-      radius: 500,
+      radius: 3000,
       limit: 50
     };
     return new Promise((resolve, reject) => {

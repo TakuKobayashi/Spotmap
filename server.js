@@ -34,11 +34,12 @@ app.get('/api/foods', function (req, res) {
   })
   */
 
+  var results = [];
   meshitero.requestGooglePlace({
     latitude: req.query.lat,
     longitude: req.query.lng
   }).then(function (response) {
-    var results = response.body.results.map(function (place) {
+    var places = response.body.results.map(function (place) {
       return {
         name: place.name,
         lat: place.geometry.location.lat,
@@ -48,7 +49,23 @@ app.get('/api/foods', function (req, res) {
         address: place.vicinity
       }
     });
-    console.log(results);
+    results = results.concat(places);
+    return meshitero.requestYelp({
+      latitude: req.query.lat,
+      longitude: req.query.lng
+    })
+  }).then(function (yelpRes) {
+    var yelps = yelpRes.body.businesses.map(function (yelp) {
+      return {
+        name: yelp.name,
+        lat: yelp.coordinates.latitude,
+        lon: yelp.coordinates.longitude,
+        image: yelp.image_url,
+        rating: yelp.rating,
+        address: yelp.location.display_address.join
+      }
+    });
+    results = results.concat(yelps);
     res.json(results);
   });
 });
