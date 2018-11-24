@@ -40,11 +40,16 @@ app.get('/api/foods', function (req, res) {
     longitude: req.query.lng
   }).then(function (response) {
     var places = response.body.results.map(function (place) {
+      var photo = ((place.photos || [])[0] || {});
+      var image_url = "";
+      if (photo.photo_reference) {
+        image_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo.photo_reference + "&key=" + process.env.GOOGLE_APIKEY;
+      }
       return {
         name: place.name,
         lat: place.geometry.location.lat,
         lon: place.geometry.location.lng,
-        image: place.icon,
+        image: image_url,
         rating: place.rating,
         address: place.vicinity
       }
