@@ -23,7 +23,20 @@ function getGeo() {
   navigator.geolocation.getCurrentPosition(successFunc, errorFunc);
 }
 
+function getFoods(lat, lng, onSuccess) {
+  const request = new XMLHttpRequest();
+  request.open("GET", "/api/foods?lat=" + lat + "&lng=" + lng);
+  request.addEventListener("load", (event) => {
+    onSuccess(JSON.parse(event.target.responseText));
+  });
+  request.send();
+}
+
 function initMap(lat, lng) {
+  getFoods(lat, lng, function (response) {
+    console.log(response);
+  });
+
   // 地図の作成
   var mapLatLng = new google.maps.LatLng({
     lat: markerData[0]['lat'],

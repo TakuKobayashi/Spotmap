@@ -27,9 +27,16 @@ app.get('/', function (req, res) {
 });
 
 app.get('/api/foods', function (req, res) {
+  /*
   meshitero.requestGooglePlace({
     latitude: 35.6275767,
     longitude: 135.0608655
+  })
+  */
+
+  meshitero.requestGooglePlace({
+    latitude: req.query.lat,
+    longitude: req.query.lng
   }).then(function (response) {
     var results = response.body.results.map(function (place) {
       return {
